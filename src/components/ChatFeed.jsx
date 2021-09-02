@@ -70,8 +70,18 @@ const ChatFeed = (props) => {
     );
 
   return (
-    <div className="chat-feed">
-      <div className="chat-title-container">
+    <div className="chat-feed" style={{ position: "relative" }}>
+      <div
+        className="chat-title-container"
+        style={{
+          position: "fixed",
+          top: "0",
+          left: "0",
+          marginBottom: "2rem",
+          backgroundColor: "white",
+          width: "100%",
+        }}
+      >
         <div className="chat-title">{chat?.title}</div>
         <div className="chat-subtitle">
           {chat.people.map((person) => {
@@ -83,10 +93,13 @@ const ChatFeed = (props) => {
         </div>
       </div>
 
-      {renderMessages()}
-
       <div style={{ height: "100px" }} />
-      <div className="message-form-container">
+
+      <div style={{ padding: "4rem 0" }}>{renderMessages()}</div>
+      <div
+        className="message-form-container"
+        style={{ position: "fixed", bottom: "0", left: "0", width: "100%" }}
+      >
         <MessageForm {...props} chatId={activeChat} />
       </div>
     </div>
